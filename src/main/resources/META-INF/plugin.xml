@@ -1,0 +1,32 @@
+<idea-plugin version="2">
+    <id>org.psliwa.idea.givwenzen</id>
+    <name>GivWenZen Plugin</name>
+    <vendor email="me@psliwa.org" />
+
+    <description>Plugin for IntelliJ that provides support for legacy library: GivWenZen</description>
+
+    <change-notes><![CDATA[
+        <h2>0.1</h2>
+        <ul>
+            <li>Navigation from steps usages to definitions</li>
+        </ul>
+    ]]></change-notes>
+
+    <idea-version since-build="171.0.0"/>
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <psi.referenceContributor
+                language="TEXT"
+                implementation="org.psliwa.idea.givwenzen.ReferenceContributor"
+        />
+    </extensions>
+
+    <project-components></project-components>
+
+    <application-components>
+    </application-components>
+
+    <actions></actions>
+
+</idea-plugin>

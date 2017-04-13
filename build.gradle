@@ -1,0 +1,44 @@
+buildscript {
+    ext.kotlin_version = '1.1.1'
+
+    repositories {
+        mavenCentral()
+        maven { url 'http://dl.bintray.com/jetbrains/intellij-plugin-service' }
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+plugins {
+    id "org.jetbrains.intellij" version "0.2.7"
+}
+
+group 'org.psliwa.idea'
+version '0.1'
+
+apply plugin: 'kotlin'
+
+repositories {
+    mavenCentral()
+}
+
+def ideaVersion = System.getProperty("ideaVersion", "2017.1")
+def javaVersion = 1.8
+
+sourceCompatibility = javaVersion
+targetCompatibility = javaVersion
+
+intellij {
+    version ideaVersion
+    type 'IU'
+    pluginName 'idea-givwenzen-plugin'
+    updateSinceUntilBuild false
+    sameSinceUntilBuild false
+    downloadSources !Boolean.valueOf(System.getenv('CI'))
+    sandboxDirectory "${project.rootDir}/.idea-sandbox"
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+}
