@@ -15,7 +15,7 @@ plugins {
 }
 
 group 'org.psliwa.idea'
-version '0.1'
+version '0.2'
 
 apply plugin: 'kotlin'
 
