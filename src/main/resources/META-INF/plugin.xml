@@ -9,6 +9,7 @@
         <h2>0.3</h2>
         <ul>
             <li>Support for string concatenation in DomainStep</li>
+            <li>Mark DomainStep method as used when it is used in content.txt files (eg. unused method declaration inspection works)</li>
         </ul>
 
         <h2>0.2</h2>
@@ -30,6 +31,7 @@
                 language="TEXT"
                 implementation="org.psliwa.idea.givwenzen.ReferenceContributor"
         />
+        <implicitUsageProvider implementation="org.psliwa.idea.givwenzen.DomainStepImplicitUsageProvider" />
     </extensions>
 
     <project-components></project-components>

@@ -2,7 +2,6 @@ package org.psliwa.idea.givwenzen
 
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.*
-import java.util.regex.Pattern
 import java.util.regex.PatternSyntaxException
 
 class DomainStepReference(private val element: PsiFile, private val textRange: TextRange) : PsiPolyVariantReferenceBase<PsiElement>(element, textRange) {
@@ -16,9 +15,8 @@ class DomainStepReference(private val element: PsiFile, private val textRange: T
 
         return domainSteps.flatMap { domainStep ->
             try {
-                val pattern = Pattern.compile("^"+domainStep.step+"$")
-                val matcher = pattern.matcher(textRange.substring(element.text))
-                if(matcher.find()) {
+                val pattern = Regex("^"+domainStep.step+"$")
+                if(pattern.containsMatchIn(textRange.substring(element.text))) {
                     listOf(domainStep.method)
                 } else {
                     emptyList()
