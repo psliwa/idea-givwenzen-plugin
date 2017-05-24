@@ -6,6 +6,11 @@
     <description>Plugin for IntelliJ that provides support for legacy library: GivWenZen</description>
 
     <change-notes><![CDATA[
+        <h2>0.3</h2>
+        <ul>
+            <li>Support for string concatenation in DomainStep</li>
+        </ul>
+
         <h2>0.2</h2>
         <ul>
             <li>Compatibility with IntelliJ 2016.+</li>
