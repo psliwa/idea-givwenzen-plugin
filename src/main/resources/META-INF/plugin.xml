@@ -23,14 +23,18 @@
         </ul>
     ]]></change-notes>
 
-    <idea-version since-build="145.0"/>
+    <idea-version since-build="183.0"/>
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <psi.referenceContributor
                 language="TEXT"
-                implementation="org.psliwa.idea.givwenzen.ReferenceContributor"
+                implementation="org.psliwa.idea.givwenzen.ReferenceContributorInContentFiles"
+        />
+        <psi.referenceContributor
+                language="JAVA"
+                implementation="org.psliwa.idea.givwenzen.ReferenceContributorInJavaFiles"
         />
         <implicitUsageProvider implementation="org.psliwa.idea.givwenzen.DomainStepImplicitUsageProvider" />
     </extensions>

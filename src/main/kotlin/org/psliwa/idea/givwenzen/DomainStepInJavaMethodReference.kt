@@ -4,7 +4,7 @@ import com.intellij.openapi.util.TextRange
 import com.intellij.psi.*
 import java.util.regex.PatternSyntaxException
 
-class DomainStepReference(private val element: PsiFile, private val textRange: TextRange) : PsiPolyVariantReferenceBase<PsiElement>(element, textRange) {
+class DomainStepInJavaMethodReference(private val element: PsiFile, private val textRange: TextRange) : PsiPolyVariantReferenceBase<PsiElement>(element, textRange) {
     override fun getVariants(): Array<Any> {
         return emptyArray()
     }

@@ -11,19 +11,20 @@ buildscript {
 }
 
 plugins {
-    id "org.jetbrains.intellij" version "0.2.7"
+    id 'org.jetbrains.intellij' version '0.4.10'
 }
 
 group 'org.psliwa.idea'
-version '0.3'
+version '0.4'
 
 apply plugin: 'kotlin'
+apply plugin: 'org.jetbrains.intellij'
 
 repositories {
     mavenCentral()
 }
 
-def ideaVersion = System.getProperty("ideaVersion", "2017.1")
+def ideaVersion = System.getProperty("ideaVersion", "2019.3.1")
 def javaVersion = 1.8
 
 sourceCompatibility = javaVersion
@@ -37,6 +38,7 @@ intellij {
     sameSinceUntilBuild false
     downloadSources !Boolean.valueOf(System.getenv('CI'))
     sandboxDirectory "${project.rootDir}/.idea-sandbox"
+    plugins = ['java']
 }
 
 dependencies {

@@ -5,7 +5,7 @@ import com.intellij.psi.JavaPsiFacade
 import com.intellij.psi.search.GlobalSearchScope
 import com.intellij.psi.search.searches.AnnotatedElementsSearch
 
-class DomainStepIndex(val project: Project) {
+class DomainStepIndex(private val project: Project) {
 
     fun findDomainSteps(): List<DomainStep> {
         val scope = GlobalSearchScope.allScope(project)

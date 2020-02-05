@@ -6,19 +6,18 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiMethod
 import com.intellij.psi.search.FilenameIndex
 import com.intellij.psi.search.GlobalSearchScope
-import com.intellij.psi.search.searches.ReferencesSearch
 import java.util.regex.PatternSyntaxException
 
 class DomainStepImplicitUsageProvider : ImplicitUsageProvider {
-    override fun isImplicitWrite(element: PsiElement?): Boolean {
+    override fun isImplicitWrite(element: PsiElement): Boolean {
         return false
     }
 
-    override fun isImplicitRead(element: PsiElement?): Boolean {
+    override fun isImplicitRead(element: PsiElement): Boolean {
         return false
     }
 
-    override fun isImplicitUsage(element: PsiElement?): Boolean {
+    override fun isImplicitUsage(element: PsiElement): Boolean {
         return when(element) {
             is PsiMethod -> isUsed(element)
             is PsiClass -> isUsed(element)
