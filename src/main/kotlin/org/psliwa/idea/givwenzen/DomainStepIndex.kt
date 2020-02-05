@@ -10,14 +10,11 @@ class DomainStepIndex(val project: Project) {
     fun findDomainSteps(): List<DomainStep> {
         val scope = GlobalSearchScope.allScope(project)
 
-        val domainSteps = JavaPsiFacade.getInstance(project)
+        return JavaPsiFacade.getInstance(project)
                 .findClasses("org.givwenzen.annotations.DomainSteps", scope)
                 .flatMap { it -> AnnotatedElementsSearch.searchPsiClasses(it, scope) }
                 .flatMap { it -> it.allMethods.toList() }
-                .map { it -> DomainStep.from(it) }
-                .filterNotNull()
-
-        return domainSteps
+                .mapNotNull { it -> DomainStep.from(it) }
     }
 
 }

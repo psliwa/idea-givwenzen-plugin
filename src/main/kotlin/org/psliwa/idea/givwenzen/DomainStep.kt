@@ -9,18 +9,17 @@ class DomainStep(val step: String, val method: PsiMethod) {
     companion object {
         fun from(method: PsiMethod): DomainStep? {
             fun annotationValueToString(value: PsiAnnotationMemberValue): String {
-                when(value) {
+                return when(value) {
                     is PsiBinaryExpression ->
-                        return annotationValueToString(value.lOperand) + if(value.rOperand != null) annotationValueToString(value.rOperand!!) else ""
+                        annotationValueToString(value.lOperand) + if(value.rOperand != null) annotationValueToString(value.rOperand!!) else ""
                     else ->
-                        return StringUtil.unescapeBackSlashes(StringUtil.stripQuotesAroundValue(value.text))
+                        StringUtil.unescapeBackSlashes(StringUtil.stripQuotesAroundValue(value.text))
                 }
             }
 
             return method.modifierList.annotations.toList()
                     .filter { it -> it.qualifiedName.equals("org.givwenzen.annotations.DomainStep") }
-                    .map { it -> it.parameterList.attributes.firstOrNull()?.value }
-                    .filterNotNull()
+                    .mapNotNull { it -> it.parameterList.attributes.firstOrNull()?.value }
                     .map(::annotationValueToString)
                     .map { it -> DomainStep(it, method)}
                     .firstOrNull()
